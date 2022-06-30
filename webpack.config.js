@@ -16,7 +16,7 @@ module.exports = {
     //loader for css files
     devtool : "source-map",
     devServer : {
-        static : path.resolve(__dirname, "dist"),
+        watchFiles : ["src/**/*"],
         port : 3000,
         //when the code is compiled i want the browser to open.
         open : true,
