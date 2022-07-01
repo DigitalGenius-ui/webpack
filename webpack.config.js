@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     mode : "development",
@@ -29,8 +30,9 @@ module.exports = {
         rules: [
             // css part 
             {
-              test: /\.css$/,
-              use: ["style-loader", "css-loader"],
+              test: /\.(sass|scss|css)$/,
+              exclude : /node_modules/,
+              use: [MiniCssExtractPlugin.loader, "css-loader", 'sass-loader'],
             },
             // babel part 
             //babel is to let the app opens in older browsers.
@@ -47,9 +49,13 @@ module.exports = {
             },
             // image file part 
             {
-                test: /\.(png|svg|jpg|jpeg|gif)$/i,
-                type: 'asset/resource',
-            },
+                test: /\.(svg|eot|woff|woff2|ttf|png|jpg|jpeg)$/,
+                exclude : /node_modules/,
+                loader:'file-loader',
+                options : {
+                    outputPath : 'fonts',
+                }
+            }
         ]
     },
     // plugins
@@ -58,6 +64,7 @@ module.exports = {
             title : "Webpack title",
             filename : "index.html",
             template : path.resolve(__dirname, "src/app.html")
-        })
+        }),
+        new MiniCssExtractPlugin(),
     ]
 }
