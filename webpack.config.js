@@ -31,7 +31,6 @@ module.exports = {
             // css part 
             {
               test: /\.(sass|scss|css)$/,
-              exclude : /node_modules/,
               use: [MiniCssExtractPlugin.loader, "css-loader", 'sass-loader'],
             },
             // babel part 

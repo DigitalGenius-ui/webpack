@@ -1,5 +1,10 @@
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/css/all.css';
+// slick slider 
+@import "../../node_modules/slick-carousel/slick/slick.css";
+@import "../../node_modules/slick-carousel//slick/slick-theme.css";
+@import "./slickFix";
+
 *{
     margin: 0;
     padding: 0;
